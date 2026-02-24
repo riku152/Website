@@ -1,0 +1,158 @@
+
+:root {
+    --primary: #003366; 
+    --gold: #d4af37;    
+    --gray-bg: #f4f4f4;
+    --card-gray: #e0e0e0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+body { background-color: var(--gray-bg); display: flex; flex-direction: column; min-height: 100vh; }
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+
+/* HEADER */
+header { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+.top-bar { background: var(--primary); color: white; text-align: center; padding: 5px; font-size: 0.9rem; }
+.nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+
+/* Tìm đoạn .logo cũ và thay thế toàn bộ bằng đoạn này */
+
+.logo { 
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    color: var(--primary); 
+    
+    /* Thêm 3 dòng này để ảnh và chữ căn giữa theo chiều dọc */
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* Đảm bảo không bị gạch chân */
+}
+
+/* Xóa hoặc bỏ class .logo i cũ đi, thay bằng cái này */
+.logo img {
+    height: 40px;       /* Chiều cao logo (bạn có thể tăng giảm tùy thích, ví dụ 50px) */
+    width: auto;        /* Giữ nguyên tỷ lệ ảnh không bị méo */
+    margin-right: 12px; /* Khoảng cách giữa logo và chữ */
+    object-fit: contain; /* Đảm bảo logo hiển thị trọn vẹn */
+}
+
+/* MENU */
+.main-menu { display: flex; list-style: none; gap: 20px; }
+.main-menu a { font-weight: 600; padding: 5px 10px; color: #333; position: relative; }
+.main-menu a:hover, .main-menu a.active { color: var(--primary); }
+.main-menu a.active::after { content: ''; display: block; width: 100%; height: 2px; background: var(--gold); position: absolute; bottom: 0; left: 0; }
+
+/* CONTENT */
+.main-content { flex: 1; }
+.container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+/* HERO BANNER (Chỉ trang chủ) */
+.hero { background: linear-gradient(rgba(0,51,102,0.8), rgba(0,51,102,0.6)), url('https://via.placeholder.com/1920x600'); background-size: cover; color: white; text-align: center; padding: 80px 20px; margin-bottom: 20px; }
+.hero h1 { font-size: 2.5rem; text-transform: uppercase; margin-bottom: 10px; }
+
+/* TIÊU ĐỀ & BUTTON */
+.page-title { text-align: center; margin-bottom: 40px; color: var(--primary); border-bottom: 3px solid var(--gold); display: inline-block; padding-bottom: 10px; }
+.center-box { text-align: center; }
+.cta-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+
+
+.card-body { padding: 20px; }
+.card-date { display: block; font-size: 0.85rem; color: #888; margin-bottom: 8px; }
+.card-title { font-size: 1.1rem; font-weight: bold; margin-bottom: 10px; color: var(--primary); }
+
+/* FOOTER */
+footer { background: var(--primary); color: white; text-align: center; padding: 20px; margin-top: auto; }
+
+
+
+.cards-grid { 
+    display: grid; 
+    /* Chia 2 cột đều nhau để tạo thành 4 góc */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 30px; 
+}
+
+/* Giao diện thẻ tin tức (Cái này đang bị thiếu nên mới mất khung đó!) */
+.card { 
+    background: white;          /* Màu nền trắng */
+    border-radius: 8px;         /* Bo tròn góc */
+    overflow: hidden;           /* Cắt ảnh thừa */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Đổ bóng nhẹ */
+    
+    /* Các thuộc tính quan trọng cho thẻ link <a> */
+    display: block;             
+    text-decoration: none;      
+    color: inherit;        
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hiệu ứng khi di chuột */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Khung chứa ảnh */
+.card-img-placeholder { 
+    height: 200px; 
+    background-color: var(--card-gray); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    overflow: hidden;
+}
+
+/* Ảnh bên trong */
+.card-img-placeholder img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    display: block;
+}
+
+/* Responsive: Trên điện thoại thì về lại 1 cột cho dễ xem */
+@media (max-width: 768px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* style.css - Thêm vào cuối file */
+
+/* Khung tranh lịch sử */
+.historical-frame {
+    text-align: center; /* Căn giữa nội dung */
+    margin: 30px auto;  /* Canh giữa khung và tạo khoảng cách trên dưới */
+    max-width: 500px;   /* Giới hạn chiều rộng để ảnh không quá to */
+    padding: 15px;      /* Khoảng cách từ ảnh đến viền khung */
+    
+    /* Tạo hiệu ứng khung kép sang trọng */
+    border: 3px solid var(--gold);    /* Viền trong màu vàng */
+    outline: 2px solid var(--primary);/* Viền ngoài màu xanh */
+    outline-offset: 5px;              /* Khoảng cách giữa 2 viền */
+    
+    background-color: #fffcf5; /* Màu nền hơi ngà vàng cổ điển */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Đổ bóng cho nổi bật */
+}
+
+/* Ảnh bên trong khung */
+.historical-frame img {
+    max-width: 100%; /* Ảnh tự co giãn theo khung */
+    height: auto;
+    border: 1px solid #ddd; /* Viền mỏng sát bức ảnh */
+    display: block;
+    margin: 0 auto;
+}
+
+/* Chú thích bên dưới ảnh */
+.historical-frame .caption {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--primary);
+    font-style: italic;
+}
